@@ -15,11 +15,14 @@ int main(void)
 	{
 		for (ones = '0'; tens <= '9'; ones++)/*prints ones digits */
 		{
-			if (!((ones ==tens) || (tens > ones)))/* elimites repitation */
+			if (!((ones == tens) || (tens == hundreds) ||
+						(tens > ones) || (hundres > tens)))/* eliminates repitation */
 			{
+				putchar(hundres);
 				putchar(tens);
 				putchar(ones);
-				if (!(ones == '9' && tens == '8'))/*adds commas and spaces */
+				if (!(ones == '9' && hundreds == '8' &&
+						tens == '8'))/*adds commas and spaces */
 				{
 					putchar(',');
 					putchar(' ');
