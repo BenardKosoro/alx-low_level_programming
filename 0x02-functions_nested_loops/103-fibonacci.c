@@ -3,7 +3,7 @@
 
 /**
  * main - main block
- * Description - finds and prints the sum of the even-valued terms , 4,000,000
+ * Description - finds and prints the sum of the even number < 4,000,000
  * followed by a new line.
  * Return: 0
  */
