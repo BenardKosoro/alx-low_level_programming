@@ -1,7 +1,8 @@
 #include "main.hj"
 
 /**
- * print_numbers - prints numbers bewteeen 0 to 9
+ * print_numbers - prints 0123456789\n
+ *
  * Return: no return
  */
 
@@ -9,7 +10,7 @@ void print_numbers(void)
 {
 	int ch;
 
-	for (ch = 0; ch < 10; ch++)
+	for (ch = '0'; ch <= '9'; ch++)
 	{
 		_putchar(ch);
 	}
