@@ -1,18 +1,17 @@
-#include "main.hj"
+#include "main.h"
 
 /**
- * print_numbers - prints 0123456789\n
- *
- * Return: no return
+ * print_numbers - Print the numbers since 0 up to 9
+ * Retun: The numbers since 0 up to 9
  */
 
 void print_numbers(void)
 {
-	char ch;
+	int x;
 
-	for (ch = '0'; ch <= '9'; ch++)
+	for (x = 0; x <= 9; x++)
 	{
-		_putchar(ch);
+		_putchar(x + '0');
 	}
 	_putchar('\n');
 }
