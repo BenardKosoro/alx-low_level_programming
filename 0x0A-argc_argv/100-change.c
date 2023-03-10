@@ -1,60 +1,42 @@
+#include "main.h"
 #include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-#include <string.h>
 
 /**
- * check_num - check - string there are digits
- * @str: array str
- *
- * Return: Always 0 (Success)
- */
-
-int check_num(char *str)
-{
-	unsigned int count;
-
-	count = 0;
-	while (count < strlen(str))
-	{
-		if (!isdigit(str[count]))
-		{
-			return (0);
-		}
-		count++;
-	}
-	return (1);
-}
-
-/**
- * main - Print the number of the program
- * @argc: Count argumrnts
- * @argv: Arguments
- *
- * Return: Always 0 (Success)
+ * main - function
+ * @argc: length of argv
+ * @argv: number of argumet
+ * Return: number of argument
  */
 
 int main(int argc, char *argv[])
 {
-	int count;
-	int str_to_int;
-	int sum = 0;
+	int position, total, change, aux;
+	int coins[] = {25, 10, 5, 2, 1};
 
-	count = 1;
-	while (count < argc)
+	position = total = change = aux = 0;
+
+	if (argc != 2)
 	{
-		if (check_num(argv[count]))
-		{
-			str_to_int = atoi(argv[count]);
-			sum += str_to_int;
-		}
-		else
-		{
-			printf("Error\n");
+		printf("Error\n");
 			return (1);
-		}
-		count++;
 	}
-	printf("%d\n", sum);
-	return (0);
+	total = atoi(argv[1]);
+
+	if (total <= 0)
+	{
+		printf("0\n");
+		return (0);
+	}
+	while (coins[position] != '\0')
+	{
+		if (total >= coins[position])
+		{
+			aux = (total / coins[position]);
+			change += aux;
+			total -= coins[position] * aux;
+		}
+	position++;
+	}
+printf("%d\n", change);
+return (0);
 }
