@@ -1,21 +1,27 @@
 #include "lists.h"
 
 /**
- * pop_listint - function with one argument
- * @head: pointer to head pointer of list
+ * get_nodeint_at_index - returns a pointer of a nth node.
+ * @head: pointer to a head of a list.
+ * @index: which node to fetch from a list starting at 0.
  *
- * Description: deletes the head node of linked list
- * Return: head node's data (n)
+ * Return: pointer to a node (listint_t).
  */
-int pop_listint(listint_t **head)
+listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 {
-	listint_t *temp;
+	unsigned int i = 0;
+	listint_t *node;
 
-	if (*head)
+	if (!head)
+		return (NULL);
+
+	node = head;
+	while (i < index)
 	{
-		temp = *head;
-		*head = (*head)->next;
-		free(temp);
+		if (!node)
+			return (NULL);
+		node = node->next;
+		i++;
 	}
-	return ((*head)->n);
+	return (node);
 }
