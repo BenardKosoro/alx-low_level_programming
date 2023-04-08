@@ -1,23 +1,18 @@
 #include "main.h"
 #include <stdlib.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
 
 /**
- * read_textfile - read a text file and print to STDOUT.
- * @filename: path of filename to read.
- * @letters: number of letters to read and write.
+ * read_textfile - Reads a text file and prints it to POSIX stdout.
+ * @filename: A pointer to the name of the file.
+ * @letters: The number of letters the
+ *           function should read and print.
  *
- * Return: 0 if `filename' is NULL orcannot be opened or read,
- * 0 if call to write fails or is less than the expected number
- * of bytes, or the total number of bytes used to call write.
+ * Return: If the function fails or filename is NULL - 0.
+ *         O/w - the actual number of bytes the function can read and print.
  */
-
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	ssize_t op, rd, wr;
+	ssize_t o, r, w;
 	char *buffer;
 
 	if (filename == NULL)
@@ -27,18 +22,18 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (buffer == NULL)
 		return (0);
 
-	op = open(filename, O_RDONLY);
-	rd = read(op, buffer, letters);
-	wr = write(STDOUT_FILENO, buffer, rd);
+	o = open(filename, O_RDONLY);
+	r = read(o, buffer, letters);
+	w = write(STDOUT_FILENO, buffer, r);
 
-	if (op == -1 || rd == -1 || wr == -1 || wr != rd)
+	if (o == -1 || r == -1 || w == -1 || w != r)
 	{
 		free(buffer);
 		return (0);
 	}
 
 	free(buffer);
-	close(op);
+	close(o);
 
-	return (wr);
+	return (w);
 }
